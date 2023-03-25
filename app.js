@@ -29,6 +29,9 @@ app.use("/public/uploads", express.static(path.join(__dirname, "public/uploads")
 // app.use(authJwt());
 
 // Routes
+app.use("/", (req, res) => {
+    res.json({message: 'Server running successfully'})
+})
 app.use(`${api}/products`, productRoutes);
 app.use(`${api}/categories`, categoryRoutes);
 app.use(`${api}/orders`, orderRoutes);
