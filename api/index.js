@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const readFileSync  = require('fs');
 
 
 require('dotenv').config();
@@ -16,16 +17,18 @@ const port = process.env.PORT || devEnv.PORT;
 const api = process.env.API_URL || devEnv.API_URL;
 // const authJwt = require('../middlewares/jwt-auth');
 const app = express();
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200
-  }
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Middelwares
 app.use(bodyParser.json());
-app.use("../public/uploads", express.static(path.join(__dirname, "../public/uploads")));
+app.use("public/uploads", express.static(path.join(__dirname, "public/uploads")));
+export default function handler(req, res) {
+    const file = path.join(process.cwd(), 'files', 'test.json');
+    const stringified = readFileSync(file, 'utf8');
+  
+    res.setHeader('Content-Type', 'application/json');
+    return res.end(stringified);
+  }
 // app.use(authJwt());
 
 // Routes
