@@ -4,7 +4,7 @@ const cors = require('cors');
 const path = require('path');
 
 require('dotenv').config();
-require('.../models/db.model');
+require('../models/db.model');
 const devEnv = require('../dev-env/dev-env');
 const productRoutes = require('../routes/product.routes');
 const categoryRoutes = require('../routes/category.routes');
