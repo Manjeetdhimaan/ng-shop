@@ -207,6 +207,7 @@ module.exports.updateProduct = async (req, res, next) => {
 
 module.exports.updateProductGallery = async (req, res, next) => {
     try {
+        console.log(`${req.protocol}://${req.get('host')}`)
         if (!mongoose.isValidObjectId(req.params.id)) {
             return res.status(400).json({
                 success: false,
