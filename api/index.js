@@ -19,7 +19,7 @@ app.use(cors());
 
 // Middelwares
 app.use(bodyParser.json());
-app.use("../public/uploads", express.static(path.join(__dirname, "public/uploads")));
+app.use("../public/uploads", express.static(path.join(__dirname, "../public/uploads")));
 // app.use(authJwt());
 
 // Routes
