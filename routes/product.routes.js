@@ -10,7 +10,7 @@ router.get('/get-products-count', jwtHelper.verifyJwtToken, jwtHelper.isAdmin, c
 router.get('/get-featured-products/:count/:sort', ctrlProduct.getFeaturedProducts);
 router.get('/get-product/:id', ctrlProduct.getProduct);
 router.post('/post-product', jwtHelper.verifyJwtToken, jwtHelper.isAdmin, extractFile.single('image'), ctrlProduct.postProduct);
-router.post('/update-product/:id', jwtHelper.verifyJwtToken, jwtHelper.isAdmin, extractFile.single('image'), ctrlProduct.updateProduct);
+router.put('/update-product/:id', jwtHelper.verifyJwtToken, jwtHelper.isAdmin, extractFile.single('image'), ctrlProduct.updateProduct);
 router.post('/update-product-gallery/:id', jwtHelper.verifyJwtToken, jwtHelper.isAdmin, extractFile.array('images', 20), ctrlProduct.updateProductGallery);
 router.delete('/delete-product/:id', jwtHelper.verifyJwtToken, jwtHelper.isAdmin, ctrlProduct.deleteProduct);
 
