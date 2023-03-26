@@ -2,8 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const readFileSync  = require('fs');
-
 
 require('dotenv').config();
 require('.../models/db.model');
@@ -21,14 +19,7 @@ app.use(cors());
 
 // Middelwares
 app.use(bodyParser.json());
-app.use("public/uploads", express.static(path.join(__dirname, "public/uploads")));
-export default function handler(req, res) {
-    const file = path.join(process.cwd(), 'files', 'test.json');
-    const stringified = readFileSync(file, 'utf8');
-  
-    res.setHeader('Content-Type', 'application/json');
-    return res.end(stringified);
-  }
+app.use("../public/uploads", express.static(path.join(__dirname, "public/uploads")));
 // app.use(authJwt());
 
 // Routes
