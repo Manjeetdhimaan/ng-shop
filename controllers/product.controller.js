@@ -138,10 +138,10 @@ module.exports.updateProduct = async (req, res, next) => {
                 });
             } else {
                 let imagePath;
-//                 if (req.file) {
-//                     const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
-//                     imagePath = basePath + req.file.filename;
-//                 }
+                if (req.file) {
+                    const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
+                    imagePath = basePath + req.file.filename;
+                }
 
                 founededProduct.isFeatured = req.body.isFeatured;
                 if (req.body.name) {
