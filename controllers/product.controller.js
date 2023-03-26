@@ -117,7 +117,6 @@ module.exports.postProduct = async (req, res, next) => {
 
 module.exports.updateProduct = async (req, res, next) => {
     try {
-        console.log('body', req.body)
         if (!mongoose.isValidObjectId(req.params.id)) {
             return res.status(400).json({
                 success: false,
@@ -139,10 +138,10 @@ module.exports.updateProduct = async (req, res, next) => {
                 });
             } else {
                 let imagePath;
-                if (req.file) {
-                    const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
-                    imagePath = basePath + req.file.filename;
-                }
+//                 if (req.file) {
+//                     const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
+//                     imagePath = basePath + req.file.filename;
+//                 }
 
                 founededProduct.isFeatured = req.body.isFeatured;
                 if (req.body.name) {
@@ -182,7 +181,6 @@ module.exports.updateProduct = async (req, res, next) => {
                     founededProduct.dateCreated = req.body.dateCreated;
                 }
             };
-            console.loh("founededProduct", founededProduct);
             founededProduct.save().then((savedProduct) => {
                 if (!savedProduct) {
                     return res.status(503).send({
