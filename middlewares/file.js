@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(error, "tmp/uploads");
+        cb(error, "public/uploads");
         // cb(null, 'public/uploads')
     },
     filename: function (req, file, cb) {
